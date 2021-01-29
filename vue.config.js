@@ -15,5 +15,13 @@ module.exports = {
             'hooks': pahtResolve('src/hooks'),
             'theme': pahtResolve('src/theme')
         }
+    },
+    css: {
+        requireModuleExtension: true,
+        loaderOptions: {
+            scss: {
+                prependData: `@import "~@/theme/theme-ui.scss";`
+            }
+        }
     }
 }

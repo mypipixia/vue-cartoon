@@ -3,28 +3,35 @@
     <div class="container">
       <div class="box">
         <div class="clock">
-          <div class="hour">
-            <div class="hr"
-                 :ref="setHr">
+          <div class="pointer">
+            <div
+              :class="`pointer-scale`"
+              v-for="i in 12"
+              :style="getPointXy(i)"
+              :key="i"
+            >
+              {{ i }}
             </div>
+          </div>
+          <div class="hour">
+            <div class="hr" :ref="setHr"></div>
           </div>
           <div class="min">
-            <div class="mn"
-                 :ref="setMn">
-            </div>
+            <div class="mn" :ref="setMn"></div>
           </div>
           <div class="sec">
-            <div class="sc"
-                 :ref="setSc">
-            </div>
+            <div class="sc" :ref="setSc"></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script lang="ts">
+interface Point {
+  left: string;
+  top: string;
+}
 import { defineComponent, onMounted } from "vue";
 export default defineComponent({
   setup() {
@@ -41,6 +48,12 @@ export default defineComponent({
     const setSc = (el: HTMLDivElement) => {
       refSc = el;
     };
+    const getPointXy = (value: number): Point => {
+      return {
+        left: 50 + Math.sin((30 * value * Math.PI) / 180) * 50 + "%",
+        top: 50 - Math.cos((30 * value * Math.PI) / 180) * 50 + "%"
+      };
+    };
     const initClock = (): void => {
       const day: Date = new Date();
       const hh: number = day.getHours() * 30;
@@ -54,8 +67,8 @@ export default defineComponent({
       initClock();
       setInterval(initClock, 1000);
     });
-    return { setHr, setMn, setSc };
-  },
+    return { setHr, setMn, setSc, getPointXy };
+  }
 });
 </script>
 
@@ -74,10 +87,10 @@ export default defineComponent({
     height: 100%;
     background: linear-gradient(
       45deg,
-      #e91e63,
-      #e91e63 50%,
-      #ffc107 50%,
-      #ffc107
+      $cartoon-error,
+      $cartoon-error 50%,
+      $cartoon-warning 50%,
+      $cartoon-warning
     );
   }
   &:after {
@@ -89,8 +102,8 @@ export default defineComponent({
     height: 100%;
     background: linear-gradient(
       160deg,
-      #03a9f4,
-      #03a9f4 50%,
+      $cartoon-primary,
+      $cartoon-primary 50%,
       transparent 50%,
       transparent
     );
@@ -197,6 +210,18 @@ export default defineComponent({
           background-color: #fff;
           z-index: 12;
           border-radius: 6px;
+        }
+        .pointer {
+          color: #fff;
+          font-size: $cartoon-h2;
+          position: relative;
+          width: 80%;
+          height: 80%;
+          transform: translate(-$cartoon-h2/2, -$cartoon-h2/2);
+          .pointer-scale {
+            position: absolute;
+            top: 0;
+          }
         }
       }
     }

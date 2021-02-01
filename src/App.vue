@@ -8,7 +8,7 @@ import cartoonClock from "components/date/cartoonClock.vue";
 
 export default defineComponent({
   components: {
-    cartoonClock,
-  },
+    cartoonClock
+  }
 });
 </script>

@@ -1,14 +1,7 @@
 <template>
-  <cartoon-clock></cartoon-clock>
+  <router-view />
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-
-import cartoonClock from "components/date/cartoonClock.vue";
-
-export default defineComponent({
-  components: {
-    cartoonClock
-  }
-});
+export default defineComponent({});
 </script>

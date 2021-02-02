@@ -10,6 +10,7 @@ module.exports = {
   configureWebpack: config => {
     config.resolve.alias = {
       "@": pahtResolve("src"),
+      type: pahtResolve("type"),
       components: pahtResolve("src/components"),
       untils: pahtResolve("src/untils"),
       hooks: pahtResolve("src/hooks"),

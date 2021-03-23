@@ -10,12 +10,11 @@ export default defineComponent({
   props: {
     setmy: {
       type: String,
-      default: "1111",
-    },
+      default: "1111"
+    }
   },
   setup() {
     return {};
-  },
+  }
 });
 </script>
-

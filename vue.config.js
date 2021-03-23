@@ -8,14 +8,18 @@ module.exports = {
     port: 9000
   },
   configureWebpack: config => {
-    config.resolve.alias = {
-      "@": pahtResolve("src"),
-      type: pahtResolve("type"),
-      components: pahtResolve("src/components"),
-      untils: pahtResolve("src/untils"),
-      hooks: pahtResolve("src/hooks"),
-      theme: pahtResolve("src/theme")
-    };
+    return {
+      resolve: {
+        alias: {
+          "@": pahtResolve("src"),
+          type: pahtResolve("type"),
+          components: pahtResolve("src/components"),
+          untils: pahtResolve("src/untils"),
+          hooks: pahtResolve("src/hooks"),
+          theme: pahtResolve("src/theme")
+        }
+      }
+    }
   },
   css: {
     requireModuleExtension: true,

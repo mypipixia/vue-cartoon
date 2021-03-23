@@ -14,7 +14,9 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest"
+      "jest",
+      "node",
+      "@types/node"
     ],
     "paths": {
       "@/*": [
@@ -32,10 +34,22 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
+    "config/**/*.ts",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "docs/**/*.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.vue",
+    "examples/**/*.ts",
+    "examples/**/*.tsx",
+    "examples/**/*.vue"
   ],
-  "exclude": [
-    "node_modules"
+ "exclude": [
+    "node_modules",
+    "./node_modules",
+    "**/*.spec.ts",
+    "dist",
+    "config",
+    "public"
   ]
 }
